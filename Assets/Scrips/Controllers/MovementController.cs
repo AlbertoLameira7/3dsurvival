@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
+    [SerializeField] private Transform _cameraTransform;
     [SerializeField] private float _playerSpeed = 1000;
+    [SerializeField] private float _rotationSpeed = 4f;
+
     private Rigidbody _rb;
+    private Quaternion _playerRotation;
 
     void Awake()
     {
@@ -14,6 +18,13 @@ public class MovementController : MonoBehaviour
 
     public void HandleMovement(float horizontal, float vertical)
     {
-        _rb.velocity = new Vector3(horizontal, _rb.velocity.y, vertical) * _playerSpeed * Time.deltaTime;
+        _playerRotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, _cameraTransform.eulerAngles.y, 0), _rotationSpeed * Time.deltaTime);
+
+        if (horizontal != 0 || vertical != 0)
+        {
+            transform.rotation = _playerRotation;
+        }
+
+        _rb.velocity = ((transform.forward * vertical) + (transform.right * horizontal)) * _playerSpeed * Time.deltaTime;
     }
 }

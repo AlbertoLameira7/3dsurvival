@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-    PlayerControls _playerCtrls;
+    PlayerControls _playerControls;
     AnimatorManager _animatorMgr;
     MovementController _movementCtrl;
 
@@ -19,20 +19,20 @@ public class InputManager : MonoBehaviour
 
     private void OnEnable()
     {
-        if (_playerCtrls == null)
+        if (_playerControls == null)
         {
-            _playerCtrls = new PlayerControls();
+            _playerControls = new PlayerControls();
 
-            _playerCtrls.PlayerMovement.Movement.performed += i => _movementInput = i.ReadValue<Vector2>();
-            _playerCtrls.PlayerMovement.Camera.performed += i => _cameraInput = i.ReadValue<Vector2>();
+            _playerControls.PlayerMovement.Movement.performed += i => _movementInput = i.ReadValue<Vector2>();
+            _playerControls.PlayerMovement.Camera.performed += i => _cameraInput = i.ReadValue<Vector2>();
         }
 
-        _playerCtrls.Enable();
+        _playerControls.Enable();
     }
 
     private void OnDisable()
     {
-        _playerCtrls.Disable();
+        _playerControls.Disable();
     }
 
     public void HandleInput()
@@ -52,5 +52,15 @@ public class InputManager : MonoBehaviour
     private void HandleCameraInput()
     {
 
+    }
+
+    public Vector2 GetCameraInput()
+    {
+        return _cameraInput;
+    }
+
+    public Vector2 GetMovementInput()
+    {
+        return _movementInput;
     }
 }

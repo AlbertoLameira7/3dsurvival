@@ -425,9 +425,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pivot: {fileID: 2096722698}
-  _cameraObj: {fileID: 963194227}
   _player: {fileID: 919132148519491002}
   _cameraSmoothTime: 0.2
+  _maxCameraPivotAngle: 23
+  _minCameraPivotAngle: -15
+  _mouseXSensitivity: 0.2
+  _mouseYSensitivity: 0.1
+  _invertMouseX: 1
+  _invertMouseY: 1
 --- !u!4 &1614043408
 Transform:
   m_ObjectHideFlags: 0
@@ -530,6 +535,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8602622960378848390, guid: 2c8c102d113867848bf744723f9812f3, type: 3}
+      propertyPath: _playerSpeed
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 8602622960378848390, guid: 2c8c102d113867848bf744723f9812f3, type: 3}
+      propertyPath: _cameraTransform
+      value: 
+      objectReference: {fileID: 1614043408}
     - target: {fileID: 8909177592636901255, guid: 2c8c102d113867848bf744723f9812f3, type: 3}
       propertyPath: m_Name
       value: Player

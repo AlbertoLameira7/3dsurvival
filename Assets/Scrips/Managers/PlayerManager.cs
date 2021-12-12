@@ -5,17 +5,17 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     private PlayerCamera _playerCamera;
-    private InputManager _inputMgr;
+    private InputManager _inputManager;
 
     private void Awake()
     {
         _playerCamera = FindObjectOfType<PlayerCamera>();
-        _inputMgr = GetComponent<InputManager>();
+        _inputManager = GetComponent<InputManager>();
     }
 
     private void Update()
     {
-        _inputMgr.HandleInput();
+        _inputManager.HandleInput();
     }
 
     void LateUpdate()
